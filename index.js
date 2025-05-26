@@ -5,8 +5,11 @@ const express = require('express')
 const app = express();
 const port = 3001;
 
+//Mongo configuration
 const connectToMongoDb = require('./connection')
-connectToMongoDb('mongodb://localhost:27017/Home-Services').then(()=>console.log("MogoDb connected"))
+// const DB_URI =process.env.DB_URI;
+
+connectToMongoDb('mongodb+srv://yakec61396:3fL01xFcX6TwenTE@homeservices.2ilwzuw.mongodb.net/?retryWrites=true&w=majority&appName=HomeServices').then(()=>console.log("MongoDb connected"))
 
 const path = require('path')
 const staticRoute = require('./routers/staticRoute')
