@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hire Successful</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-xl shadow-xl max-w-md text-center">
+    <h2 class="text-2xl font-bold text-green-600 mb-4">Success!</h2>
+    <p class="text-lg text-gray-700 mb-4">You have successfully hired <strong><%= technician.name %></strong> for ₹<%= hire.charge %>.</p>
+    <p class="text-sm text-gray-500 mb-4">Status: <%= hire.status %></p>
+    <a href="/" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Back to Home</a>
+  </div>
+</body>
+</html>

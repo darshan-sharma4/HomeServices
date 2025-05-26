@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HomeService</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <style>
+  @keyframes scrollLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .scrolling-wrapper {
+    animation: scrollLeft 25s linear infinite;
+  }
+
+  .service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: #3b82f6;
+  }
+</style>
+
+</head>
+
+<body class="bg-gradient-to-br from-gray-100 to-blue-100 text-gray-900 font-sans">
+
+  <!-- Header -->
+<header class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="/" class="flex items-center space-x-2">
+      <img src="https://img.icons8.com/color/48/000000/home.png" alt="HomeServices Logo" class="h-10 w-10">
+      <span class="text-2xl font-extrabold text-blue-600">HomeServices</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="flex items-center space-x-6 relative">
+      <a href="/" class="text-gray-700 font-medium hover:text-blue-600 transition">Home</a>
+      <a href="/about" class="text-gray-700 font-medium hover:text-blue-600 transition">About</a>
+      <a href="/contact" class="text-gray-700 font-medium hover:text-blue-600 transition">Contact Us</a>
+
+      <!-- User Dropdown -->
+      <div class="relative group">
+        <button class="bg-blue-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors focus:outline-none">
+          User
+        </button>
+        <div class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform scale-95 group-hover:scale-100 transition-all duration-200 z-50">
+          <a href="/user/signup" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 border-b">Signup</a>
+          <a href="/user/login" class="block px-4 py-3 text-gray-700 hover:bg-blue-50">Login</a>
+          <a href="/user/logout" class="block px-4 py-3 text-gray-700 hover:bg-blue-50">Logout</a>
+        </div>
+      </div>
+
+      <!-- Technician Dropdown -->
+      <div class="relative group">
+        <button class="bg-green-600 text-white px-5 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors focus:outline-none">
+          Technician
+        </button>
+        <div class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transform scale-95 group-hover:scale-100 transition-all duration-200 z-50">
+          <a href="/technician/signup" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 border-b">Register</a>
+          <a href="/technician/login" class="block px-4 py-3 text-gray-700 hover:bg-blue-50">Login</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+  <!-- Services -->
+  <main class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center text-blue-800">Our Services</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% const services = [
+        { name: 'Mechanic', img: 'https://www.autotrainingcentre.com/wp-content/uploads/2015/06/automotive-service-advisor.png' },
+        { name: 'Plumber', img: 'https://www.yourtango.com/sites/default/files/image_blog/2024-07/laid-off-media-professional-retrain-as-plumber-.png' },
+        { name: 'Carpenter', img: 'https://us.images.westend61.de/0000878226pw/female-carpenter-sanding-wooden-plank-in-workshop-CAVF21104.jpg' },
+        { name: 'Electrician', img: 'https://electricians-sa.co.za/wp-content/uploads/2023/07/a1.jpg' },
+        { name: 'Painter', img: 'https://alis.alberta.ca/media/697574/painter-and-decorator-istock-174536787.jpg' },
+        { name: 'ACTechnician', img: 'https://www.shutterstock.com/image-photo/technician-service-cleaning-air-conditioner-600nw-1498805081.jpg' },
+        { name: 'Gardener', img: 'https://coleshill-mowing.uk/wp-content/uploads/2018/06/Watering-Plants.jpg' },
+        { name: 'Cleaner', img: 'https://insights.workwave.com/wp-content/uploads/2019/07/iStock-906777508-e1564417323957.jpg' },
+        { name: 'Driver', img: 'https://www.iru.org/sites/default/files/styles/desktop_2x_736x460/public/2020-10/Fight%20global%20youth%20unemployment%20by%20reducing%20the%20minimum%20age%20of%20professional%20drivers.jpg?h=eb2dca99&itok=UPWWz0Wl' }
+      ]; %>
+      <% services.forEach(service => { %>
+        <a href="/category/<%= service.name %>" class="service-card relative block rounded-xl overflow-hidden shadow-lg bg-white">
+          <div class="bg-overlay absolute inset-0 z-0"></div>
+          <img src="<%= service.img %>?auto=format&fit=crop&w=600&q=80" alt="<%= service.name %>" class="w-full h-56 object-cover"/>
+          <div class="absolute inset-0 flex flex-col justify-center items-center z-10 text-white px-6 text-center">
+            <h3 class="text-2xl font-bold drop-shadow-lg"><%= service.name %></h3>
+            <p class="text-sm drop-shadow-md mt-2">Find trusted <%= service.name.toLowerCase() %>sවs near you</p>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </main>
+
+ <!-- Recent Happy Customers -->
+<section class="bg-white py-16 relative overflow-hidden">
+  <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center text-blue-800">Recent Happy Customers</h2>
+
+  <div class="overflow-hidden relative">
+    <div class="flex gap-8 scrolling-wrapper w-max px-4">
+      <% const customers = [
+        { name: 'Ravi Sharma', service: 'Electrician', img: 'https://randomuser.me/api/portraits/men/75.jpg' },
+        { name: 'Priya Mehta', service: 'Plumber', img: 'https://randomuser.me/api/portraits/women/65.jpg' },
+        { name: 'Amit Verma', service: 'Painter', img: 'https://randomuser.me/api/portraits/men/66.jpg' },
+        { name: 'Neha Singh', service: 'Mechanic', img: 'https://randomuser.me/api/portraits/women/47.jpg' },
+        { name: 'Suresh Patil', service: 'AC Technician', img: 'https://randomuser.me/api/portraits/men/45.jpg' },
+        { name: 'Ananya Verma', service: 'Electrician', img: 'https://randomuser.me/api/portraits/women/12.jpg' },
+        { name: 'Kavya Sharma', service: 'AC Technician', img: 'https://randomuser.me/api/portraits/women/25.jpg' },
+      ]; %>
+      <% customers.forEach(customer => { %>
+        <div class="bg-blue-50 p-6 rounded-xl shadow-md text-center min-w-[220px] border border-blue-100 service-card">
+          <img src="<%= customer.img %>" alt="<%= customer.name %>" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-blue-200 shadow-sm" />
+          <h4 class="text-lg font-semibold text-blue-800"><%= customer.name %></h4>
+          <p class="text-sm text-gray-600">Service: <%= customer.service %></p>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-12">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <img src="https://img.icons8.com/color/48/000000/home.png" alt="HomeServices Logo" class="h-8 w-8">
+          <span class="text-xl font-bold">HomeServices</span>
+        </div>
+        <p class="text-gray-300">Your trusted partner for professional home repair and maintenance services.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg mb-4 text-blue-300">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-300 hover:text-blue-400 transition-colors">About Us</a></li>
+          <li><a href="/" class="text-gray-300 hover:text-blue-400 transition-colors">Contact</a></li>
+          <li><a href="/" class="text-gray-300 hover:text-blue-400 transition-colors">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-lg mb-4 text-blue-300">Contact</h4>
+        <p class="text-gray-300">Email: support@homeservices.com</p>
+        <p class="text-gray-300">Phone: +1 800 123 4567</p>
+      </div>
+    </div>
+    <div class="bg-black text-center py-4 text-sm text-gray-400">
+      © 2025 HomeServices. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

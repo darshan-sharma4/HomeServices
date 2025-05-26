@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= technician.name %>'s Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md w-full">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">HomeServices</h1>
+      <a href="/" class="text-blue-500 hover:underline">← Back to Home</a>
+    </div>
+  </header>
+
+  <!-- Profile Section -->
+  <main class="flex-grow flex items-center justify-center py-12">
+    <div class="bg-white shadow-lg rounded-2xl p-8 max-w-2xl w-full">
+      <div class="flex items-center space-x-6">
+        <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=<%= technician.name %>" alt="avatar" class="w-24 h-24 rounded-full border-2 border-blue-400 shadow" />
+        <div>
+          <h2 class="text-3xl font-bold text-blue-700"><%= technician.name %></h2>
+          <p class="text-sm text-gray-500 capitalize"><%= technician.service %></p>
+        </div>
+      </div>
+
+      <div class="mt-6 space-y-2 text-gray-700">
+        <p><strong>Email:</strong> <%= technician.email %></p>
+        <p><strong>Phone:</strong> <%= technician.phone %></p>
+        <p><strong>Location:</strong> <%= technician.location %></p>
+        <p><strong>Experience:</strong> <%= technician.experience %> years</p>
+        <p><strong>Description:</strong> <%= technician.description %></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-sm text-center py-4">
+    &copy; 2025 HomeServices. All rights reserved.
+  </footer>
+
+</body>
+</html>
